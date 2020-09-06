@@ -6,14 +6,24 @@ function timeStartEvent(e) {
     clearIntervalClock();
     let endDate = e.target.value;
     let countDownDate = countDownUserDate(endDate);
-    runTime(countDownDate);
+    if (endDate) {
+        runTime(countDownDate);
+    } else {
+        missingDate();
+    }
+};
+
+// This function will ask the user to select a date if the input is empty
+function missingDate() {
+    document.getElementById("hiddenOnLoad").innerHTML = '';
+    document.getElementById("main").innerHTML = 'Please select a date';
 };
 
 // This function sets the users chosen date
 function countDownUserDate(endDate) {
     let countDownDate = new Date(endDate).getTime();
     return countDownDate;
-}
+};
 
 function runTime(countDownDate) {
     countDownClock = setInterval(function() {
@@ -45,15 +55,19 @@ function timeLeft(countDownDate) {
 
 // This function will display the innerHTML of the runTime function
 function mainDisplay(timeLeftObj) {
-    document.getElementById("hiddenOnLoad").innerHTML = 'You will be on vacation in...'
+
+
+    document.getElementById("hiddenOnLoad").innerHTML = 'You will be on vacation in...';
     document.getElementById("main").innerHTML = timeLeftObj.days + 'd ' + timeLeftObj.hours + 'h ' + timeLeftObj.minutes + 'm ' + timeLeftObj.seconds + 's ';
+
 };
 
 // This function will check if the time left is less than to 0 and display a message and clears the existing message
 function tripTime(timeLeftObj) {
     if (timeLeftObj.distance < 0) {
         clearIntervalClock();
-        document.getElementById("main").innerHTML = 'Bon Voyage';
+        document.getElementById("hiddenOnLoad").innerHTML = '';
+        document.getElementById("main").innerHTML = 'Bon Voyage!';
     }
 };
 

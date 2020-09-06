@@ -15,7 +15,7 @@ body {
     margin: auto;
     background: rgba(255, 255, 255, .75);
     padding: 30px;
-    width: 700px;
+    width: 80vw;
 }
 
 p {
@@ -40,6 +40,10 @@ h1 {
     font-weight: 500;
 }
 
+input {
+    margin: auto;
+}
+
 label {
     padding-bottom: 20px;
 }
@@ -52,4 +56,13 @@ label {
 #main {
     margin: auto;
     padding: 25px;
+}
+
+@media (max-width: 1200px) {
+    p {
+        font-size: 35px;
+    }
+    h1 {
+        font-size: 25px;
+    }
 }
